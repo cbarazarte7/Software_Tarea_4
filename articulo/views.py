@@ -8,7 +8,8 @@ def index(request):
     return HttpResponse("Hello, world. You're at the poll index.")
 
 def results(request, articulo_id):
-    return HttpResponse("Resultados del articulo: %s." % articulo_id)
+    a = get_object_or_404(articulo, pk=articulo_id)
+    return render(request, 'articulo/results.html', {'articulo': a})
 
 def evaluate(request, articulo_id):
     a = get_object_or_404(articulo, pk=articulo_id)

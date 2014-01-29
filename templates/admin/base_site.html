@@ -1,2 +1,10 @@
 {% extends "admin/base.html" %}
-{% block nav-home %}<strong class="nav-active">Home</strong>{% endblock %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'CLEI' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Sistema del CLEI' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
