@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from views import nuevo_evento
+from articulo import views
 
 
 urlpatterns = patterns('',
