@@ -26,4 +26,4 @@ def index(request):
 def results(request):
     objectlist = espacio.objects.all()
     context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'espacio/results.html',context)
+    return render(request, 'espacio/results.html', context)
