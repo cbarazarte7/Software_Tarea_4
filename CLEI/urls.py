@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     url(r'^home/', 'CLEI.views.home', name='home'),
     
     url(r'^articulo/', include('articulo.urls')),
+
+    url(r'^espacio/', include('espacio.urls')),
     
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/articulo/(?P<articulo_id>\d+)/results', articulo.views.results, name='resultsart'),

@@ -1,8 +1,16 @@
-<TABLE CELLSPACING="20">
-     <TR>
-          <TD>Nombre</TD> <TD>Duración</TD> <TD>Fecha de inicio</TD><TD>Lugar</TD>
-     </TR> 
-     <TR>
-          <TD>{{ evento.nombre }}</TD> <TD>{{ evento.duracion }}</TD> <TD>{{ evento.fecha_inicio }}</TD> <TD>{{ evento.lugar }}</TD>
-     </TR>
-</TABLE>
+{% if objectlist %}
+     <TABLE CELLSPACING="20">
+	     <TR>
+		  <TD>Nombre</TD> <TD>Duración</TD> <TD>Fecha de inicio</TD><TD>Lugar</TD>
+	     </TR>
+	     <ul>
+	     	{% for e in objectlist %}
+		     <TR>
+			  <TD>{{ e.nombre }}</TD> <TD>{{ e.duracion }}</TD> <TD>{{ e.fecha_inicio }}</TD> <TD>{{ e.lugar }}</TD>
+		     </TR>
+	     	{%endfor%}
+	       </TABLE>
+	    </ul>
+{% else %}
+    <p>No hay espacios disponibles.</p>
+{% endif %}

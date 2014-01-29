@@ -1,8 +1,16 @@
-<TABLE CELLSPACING="20">
-     <TR>
-          <TD>Nombre</TD> <TD>Ubicación</TD> <TD>Capacidad</TD>
-     </TR> 
-     <TR>
-          <TD>{{ espacio.nombre }}</TD> <TD>{{ espacio.ubicacion }}</TD> <TD>{{ espacio.capacidad }}</TD>
-     </TR>
-</TABLE>
+{% if objectlist %}
+     <TABLE CELLSPACING="20">
+	     <TR>
+		  <TD>Nombre</TD> <TD>Ubicación</TD> <TD>Capacidad</TD>
+	     </TR>
+	     <ul>
+	     	{% for e in objectlist %}
+		     <TR>
+			  <TD>{{ e.nombre }}</TD> <TD>{{ e.ubicacion }}</TD> <TD>{{ e.capacidad }}</TD>
+		     </TR>
+	     	{%endfor%}
+	       </TABLE>
+	    </ul>
+{% else %}
+    <p>No hay espacios disponibles.</p>
+{% endif %}
