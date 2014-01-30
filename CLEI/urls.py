@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     
     url(r'^$', 'CLEI.views.login_user'),
-    url(r'^home/', 'CLEI.views.home', name='home'),
+ #   url(r'^home/', 'CLEI.views.home', name='home'),
     
     url(r'^articulo/', include('articulo.urls')),
 
