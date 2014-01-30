@@ -6,7 +6,7 @@
 	     <ul>
 	     	{% for e in objectlist %}
 		     <TR>
-			  <TD>{{ e.nombre }}</TD> <TD>{{ e.duracion }}</TD> <TD>{{ e.fecha_inicio }}</TD> <TD>{{ e.lugar }}</TD>
+			  <TD>{{ e.nombre }}</TD> <TD>{{ e.duracion |time:"h:i"}}</TD> <TD>{{ e.fecha_inicio |date:"d/m/Y"}}</TD> <TD>{{ e.lugar }}</TD>
 		     </TR>
 	     	{%endfor%}
 	       </TABLE>
