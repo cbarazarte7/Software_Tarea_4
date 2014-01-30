@@ -3,8 +3,8 @@ from django.forms import ModelForm
 from django import forms
 from django.forms.extras.widgets import SelectDateWidget
 from django.db import models
-from models import autor
-from models import articulo
+
+from models import autor, articulo
 
 # Formulario para crear:
 class articuloForm(forms.Form):

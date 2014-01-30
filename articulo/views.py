@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-
-from articulo.models import articulo
-
 from django.contrib.auth.models import User
 from django.template import RequestContext
+
+from articulo.models import articulo
 from forms import articuloForm, evaluateForm
 
 def index(request):
@@ -32,8 +31,7 @@ def evaluate(request):
 	else:
 		formulario = evaluateForm()
 	return render_to_response('evaluateform.html', {'formulario':formulario}, context_instance=RequestContext(request))
-    
-     
+        
 def nuevo_articulo(request):
 	if request.method=='POST':
 		formulario = articuloForm(request.POST, request.FILES)

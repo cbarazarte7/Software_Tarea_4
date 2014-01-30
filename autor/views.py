@@ -1,20 +1,21 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-
-from autor.models import autor
-
 from django.contrib.auth.models import User
 from django.template import RequestContext
+
+from autor.models import autor
 from forms import autorForm
 
 def index(request):
     return HttpResponse("Hello, world. You're at the poll index.")
 
+
 def results(request):
     objectlist = autor.objects.all()
     context = RequestContext(request,{'objectlist':objectlist,})
     return render(request, 'autor/results.html', context)
+
         
 def nuevo_autor(request):
 	if request.method=='POST':
@@ -34,4 +35,3 @@ def nuevo_autor(request):
 	else:
 		formulario = autorForm()
 	return render_to_response('autorform.html', {'formulario':formulario}, context_instance=RequestContext(request))
-
