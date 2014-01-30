@@ -4,7 +4,7 @@ from articulo.models import articulo
 class articuloAdmin(admin.ModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['titulo']}),
-  	#(None, {'fields': ['autor']}),
+  	(None, {'fields': ['autor']}),
   	(None, {'fields': ['puntuacion']}),
 		('Informacion adicional', {'fields': ['texto'], 'classes': ['collapse']}),
   ]

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'espacio',
     'evento',
     'persona',
+    'autor',
 )
 
 MIDDLEWARE_CLASSES = (

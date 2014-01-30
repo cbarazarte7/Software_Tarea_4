@@ -41,7 +41,7 @@ def nuevo_articulo(request):
 		if formulario.is_valid():
 			e = articulo()
 			e.titulo = formulario.cleaned_data['titulo']
-			e.autor = formulario.data['autor']			
+			e.autor = formulario.cleaned_data['autor']			
 			e.texto = formulario.cleaned_data['texto']
 			e.puntuacion = formulario.data['puntuacion']
 			e.puntajes = formulario.data['puntajes']

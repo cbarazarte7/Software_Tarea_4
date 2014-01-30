@@ -6,6 +6,7 @@ import articulo
 import espacio
 import evento
 import persona
+import autor
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -27,4 +28,6 @@ urlpatterns = patterns('',
     url(r'^admin/espacio/(?P<espacio_id>\d+)/results', espacio.views.results, name='resultsesp'),
     url(r'^evento/', include('evento.urls')),
     url(r'^admin/evento/(?P<evento_id>\d+)/results', evento.views.results, name='resultseven'),
+    url(r'^autor/', include('autor.urls')),
+    url(r'^admin/autor/(?P<autor_id>\d+)/results',autor.views.results, name='resultsaut'),
 )
