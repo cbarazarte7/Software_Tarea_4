@@ -1,8 +1,16 @@
-<TABLE CELLSPACING="20">
-     <TR>
-          <TD>Titulo</TD> <TD>Puntuación</TD> <TD>Autor</TD>
-     </TR> 
-     <TR>
-          <TD>{{ articulo.titulo }}</TD> <TD>{{ articulo.puntuacion }}</TD> <TD>Falta autor</TD>
-     </TR>
-</TABLE>
+{% if objectlist %}
+     <TABLE CELLSPACING="20">
+	     <TR>
+		  <TD>Titulo</TD><TD>Autor</TD><TD>Texto</TD><TD>Puntuación</TD><TD>Puntaje</TD><TD>Numero de Evaluaciones</TD>
+	     </TR>
+	     <ul>
+	     	{% for e in objectlist %}
+		     <TR>
+			  <TD>{{ e.titulo }}</TD><TD>{{ e.autor }}</TD><TD>{{ e.texto }}</TD><TD>{{ e.puntuacion }}</TD><TD>{{ e.puntajes }}</TD><TD>{{ e.num_eval }}</TD>
+		     </TR>
+	     	{%endfor%}
+	       </TABLE>
+	    </ul>
+{% else %}
+    <p>No hay articulos disponibles.</p>
+{% endif %}
