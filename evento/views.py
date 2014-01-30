@@ -13,8 +13,10 @@ def nuevo_evento(request):
 		if formulario.is_valid():
 			e = evento()
 			e.nombre = formulario.cleaned_data['nombre']
-			e.duracion = formulario.data['duracion']			
-			e.fecha_inicio = formulario.cleaned_data['fecha_inicio']
+			e.duracion = formulario.data['duracion']
+			e.hora_inicio = formulario.data['hora_inicio']			
+			e.fecha = formulario.cleaned_data['fecha']
+			e.tipo = formulario.cleaned_data['tipo']
 			e.lugar_id = formulario.data['lugar']
 			e.save()
 			return HttpResponseRedirect('/evento/create')
