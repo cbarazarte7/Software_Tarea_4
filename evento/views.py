@@ -9,12 +9,13 @@ from django.core.urlresolvers import reverse
 def nuevo_evento(request):
 	if request.method=='POST':
 		formulario = eventoForm(request.POST, request.FILES)
+
 		if formulario.is_valid():
 			e = evento()
 			e.nombre = formulario.cleaned_data['nombre']
-			e.duracion = formulario.cleaned_data['duracion']			
+			e.duracion = formulario.data['duracion']			
 			e.fecha_inicio = formulario.cleaned_data['fecha_inicio']
-			e.lugar = formulario.cleaned_data['lugar']			
+			e.lugar_id = formulario.data['lugar']
 			e.save()
 			return HttpResponseRedirect('/evento/create')
 	else:
