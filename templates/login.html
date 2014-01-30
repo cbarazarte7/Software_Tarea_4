@@ -1,5 +1,28 @@
+<html>
+    <head>
+
+        <title>{% block title %}Sistema del CLEI{% endblock title %}</title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/css/style.css"type="text/css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+
+
+        </header>
+
+        
+
+		
 {% block main %}
-    <div id="login">
+    <div id="login_form">
         <form class="form-horizontal" name="LoginForm" action="" method="post">
         {% csrf_token %}
         {% if next %}
@@ -26,3 +49,5 @@
     </div>
 {% endblock %}
 
+	</body>
+</html>

@@ -1,8 +1,23 @@
 <html>
-	<head>
-		<title>{% block title %}Sistema del CLEI{% endblock title %}</title>
-	</head>
-	<body>
+    <head>
+
+        <title>{% block title %}Sistema del CLEI{% endblock title %}</title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="banner"></div>
+
+
+        </header>
 		
 		<h1>Bienvenido(a)</h1>
 		{% block nav %}

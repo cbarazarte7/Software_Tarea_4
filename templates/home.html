@@ -1,1 +1,34 @@
-<p>Welcome, {{ user.username }}.</p>
+<html>
+    <head>
+
+        <title>{% block title %}Sistema del CLEI{% endblock title %}</title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/css/style.css"type="text/css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="banner"></div>
+
+        </header>
+
+        <p>Welcome, {{ user.username }}.</p>
+
+        <div id="left_menu">
+
+            Inicio
+            Articulo
+            Inscripcion
+            Espacios
+            Eventos
+
+        </div>
+
+	</body>
+</html>
