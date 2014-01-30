@@ -1,0 +1,16 @@
+{% if objectlist %}
+     <TABLE CELLSPACING="20">
+	     <TR>
+		  <TD>Titulo</TD><TD>Autor</TD><TD>Texto</TD><TD>Puntuación</TD>
+	     </TR>
+	     <ul>
+	     	{% for e in objectlist %}
+		     <TR>
+			  <TD>{{ e.titulo }}</TD><TD>{{ e.autor }}</TD><TD>{{ e.texto }}</TD><TD>{{ e.puntuacion }}</TD>
+		     </TR>
+	     	{%endfor%}
+	       </TABLE>
+	    </ul>
+{% else %}
+    <p>No hay articulos disponibles.</p>
+{% endif %}
