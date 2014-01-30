@@ -3,7 +3,7 @@ from espacio.models import espacio
 
 class evento(models.Model):
 	nombre = models.CharField(max_length=140)
-	duracion = models.TimeField()
+	duracion = models.IntegerField()
 	hora_inicio = models.TimeField()
 	fecha = models.DateField()
 	tipo = models.CharField(max_length=100)
@@ -11,3 +11,5 @@ class evento(models.Model):
 	
 	def __unicode__(self):
 		return self.nombre
+
+
