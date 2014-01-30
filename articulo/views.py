@@ -1,30 +1,48 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
+from django.template import RequestContext
 
 from articulo.models import articulo
+from forms import articuloForm, evaluateForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+    return HttpResponse("Seccion de articulos del CLEI.")
 
-def results(request, articulo_id):
-    a = get_object_or_404(articulo, pk=articulo_id)
-    return render(request, 'articulo/results.html', {'articulo': a})
 
-def evaluate(request, articulo_id):
-    a = get_object_or_404(articulo, pk=articulo_id)
-    try:
-        selected_choice = p.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the poll voting form.
-        return render(request, 'polls/detail.html', {
-            'poll': p,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+def results(request):
+    objectlist = articulo.objects.all()
+    context = RequestContext(request,{'objectlist':objectlist,})
+    return render(request, 'articulo/results.html', context)
+
+
+def evaluate(request):
+	if request.method=='POST':
+		formulario = evaluateForm(request.POST, request.FILES)
+
+		if formulario.is_valid():
+			a = formulario.cleaned_data['articulo']		  
+			a.puntajes += float(formulario.data['puntuacion'])
+			a.num_eval += float(1)
+			a.puntuacion = float(a.puntajes/a.num_eval)
+			a.save()
+			return HttpResponseRedirect('/articulo/evaluate')
+	else:
+		formulario = evaluateForm()
+	return render_to_response('evaluateform.html', {'formulario':formulario}, context_instance=RequestContext(request))
+        
+def nuevo_articulo(request):
+	if request.method=='POST':
+		formulario = articuloForm(request.POST, request.FILES)
+
+		if formulario.is_valid():
+			a = articulo()
+			a.titulo = formulario.cleaned_data['titulo']
+			a.autor = formulario.cleaned_data['autor']			
+			a.texto = formulario.cleaned_data['texto']
+			a.save()
+			return HttpResponseRedirect('/articulo/create')
+	else:
+		formulario = articuloForm()
+	return render_to_response('articuloform.html', {'formulario':formulario}, context_instance=RequestContext(request))
