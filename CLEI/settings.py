@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'autor',
     'espacio',
     'evento',
+    'miembrocp',
 )
 
 MIDDLEWARE_CLASSES = (
