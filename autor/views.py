@@ -8,7 +8,7 @@ from autor.models import autor
 from forms import autorForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+    return HttpResponse("Seccion de autores del CLEI.")
 
 
 def results(request):
@@ -31,7 +31,7 @@ def nuevo_autor(request):
 			e.url = formulario.data['url']
 			e.telefono = formulario.data['telefono']
 			e.save()
-			return HttpResponseRedirect('/autor/create')
+			return HttpResponseRedirect('/autor/results')
 	else:
 		formulario = autorForm()
 	return render_to_response('autorform.html', {'formulario':formulario}, context_instance=RequestContext(request))

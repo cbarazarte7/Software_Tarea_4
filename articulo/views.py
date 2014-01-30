@@ -27,7 +27,7 @@ def evaluate(request):
 			a.num_eval += float(1)
 			a.puntuacion = float(a.puntajes/a.num_eval)
 			a.save()
-			return HttpResponseRedirect('/articulo/evaluate')
+			return HttpResponseRedirect('/articulo/results')
 	else:
 		formulario = evaluateForm()
 	return render_to_response('evaluateform.html', {'formulario':formulario}, context_instance=RequestContext(request))
@@ -42,7 +42,7 @@ def nuevo_articulo(request):
 			a.autor = formulario.cleaned_data['autor']			
 			a.texto = formulario.cleaned_data['texto']
 			a.save()
-			return HttpResponseRedirect('/articulo/create')
+			return HttpResponseRedirect('/articulo/results')
 	else:
 		formulario = articuloForm()
 	return render_to_response('articuloform.html', {'formulario':formulario}, context_instance=RequestContext(request))
