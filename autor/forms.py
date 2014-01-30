@@ -4,6 +4,7 @@ from django import forms
 from django.forms.extras.widgets import SelectDateWidget
 from django.db import models
 
+# Formulario para crear:
 class autorForm(forms.Form):
 	nombre = forms.CharField(widget=forms.TextInput())
 	apellido = forms.CharField(widget=forms.TextInput())
