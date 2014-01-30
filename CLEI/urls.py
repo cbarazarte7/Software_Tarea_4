@@ -6,6 +6,7 @@ import autor
 import espacio
 import evento
 import miembrocp
+import invitado
 
 admin.autodiscover()
 
@@ -27,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^evento/', include('evento.urls')),    
     #Miembro CP
     url(r'^miembrocp/', include('miembrocp.urls')),
+    #Invitado
+    url(r'^invitado/', include('invitado.urls')),
     
     # Admin:
     #url(r'^autor/', include('autor.urls')),
