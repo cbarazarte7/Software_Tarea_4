@@ -1,12 +1,20 @@
 {% if objectlist %}
      <TABLE CELLSPACING="20">
 	     <TR>
+<<<<<<< HEAD
+		  <TD>Titulo</TD><TD>Autor</TD><TD>Texto</TD><TD>Puntuación</TD>
+=======
 		  <TD>Titulo</TD><TD>Autor</TD><TD>Texto</TD><TD>Puntuación</TD><TD>Puntaje</TD><TD>Numero de Evaluaciones</TD>
+>>>>>>> 3624c0bc91f37ffbd59ddf430dab570b4fab7409
 	     </TR>
 	     <ul>
 	     	{% for e in objectlist %}
 		     <TR>
+<<<<<<< HEAD
+			  <TD>{{ e.titulo }}</TD><TD>{{ e.autor }}</TD><TD>{{ e.texto }}</TD><TD>{{ e.puntuacion }}</TD>
+=======
 			  <TD>{{ e.titulo }}</TD><TD>{{ e.autor }}</TD><TD>{{ e.texto }}</TD><TD>{{ e.puntuacion }}</TD><TD>{{ e.puntajes }}</TD><TD>{{ e.num_eval }}</TD>
+>>>>>>> 3624c0bc91f37ffbd59ddf430dab570b4fab7409
 		     </TR>
 	     	{%endfor%}
 	       </TABLE>
