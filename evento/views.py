@@ -105,7 +105,6 @@ def nuevo_evento(request):
 		if formulario.is_valid():
 			e = evento()
 			e.nombre = formulario.cleaned_data['nombre']
-			e.duracion = formulario.cleaned_data['duracion']
 			e.hora_inicio = formulario.cleaned_data['hora_inicio']	
 			e.hora_fin = formulario.cleaned_data['hora_fin']		
 			e.fecha = formulario.cleaned_data['fecha']
