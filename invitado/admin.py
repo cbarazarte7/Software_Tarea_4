@@ -1,7 +1,7 @@
 from django.contrib import admin
-from miembro_cp.models import miembro_cp
+from invitado.models import invitado
 
-class miembro_cpAdmin(admin.ModelAdmin):
+class invitadoAdmin(admin.ModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['nombre']}),
   	(None, {'fields': ['apellido']}),
@@ -10,7 +10,6 @@ class miembro_cpAdmin(admin.ModelAdmin):
   	(None, {'fields': ['institucion']}),
   	(None, {'fields': ['url']}),
   	(None, {'fields': ['telefono']}),
-  	(None, {'fields': ['esPresidente']}),
   ]
 
-admin.site.register(miembro_cp, miembro_cpAdmin)
+admin.site.register(invitado, invitadoAdmin)

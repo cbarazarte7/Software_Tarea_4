@@ -10,5 +10,20 @@ class articulo(models.Model):
 	puntajes = models.FloatField(default=0.0)
 	num_eval = models.FloatField(default=0.0)
 	
+	aceptado = 'Aceptado'
+	rechazado = 'Rechazado'
+	none = 'Sin decision'
+	
+	OPCIONES = (
+        (aceptado,'Aceptado'),
+        (rechazado,'Rechazado'),
+        (none,'Sin decision'),
+    )
+        
+	estado = models.CharField(max_length=20,choices=OPCIONES,default=aceptado)
+
+	def es_aceptable(self):
+		return self.num_eval > 3
+
 	def __unicode__(self):
 		return self.titulo
