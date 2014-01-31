@@ -6,6 +6,11 @@
 
 
 {% block contenido %}
+
+        <div id="title"> 
+            Agregar Articulo
+        </div>
+
 	<form id ='formulario' method='post' enctype='multipart/form-data' action=''> {% csrf_token %}
 		{{formulario.as_p}}
 		<p> <input type='submit' value='Agregar Articulo'/> </p>

@@ -14,7 +14,7 @@
             $( document ).ready(
                 function() {
 
-                    alert("Document loaded");
+                   // alert("Document loaded");
 
                     $(function() {
                         $( "#accordion" ).accordion({
@@ -41,7 +41,9 @@
 
         <div id="left_pannel">
             
-            <a class="menu_item" href="/home">Inicio</a>
+            <a class="menu_item" href="/home" style="font-size: 20px; 
+                margin-bottom: 3px;
+                color: #bb4630;" >Inicio</a>
 
             <div id="accordion">
 
@@ -121,11 +123,18 @@
 
         <div id="central_pannel">
 
+
+            <div id="container">
+
             {% block contenido %}
 
-            <p>Bienvenido, {{ user.username }}.</p>
+            <div id="title"> 
+               Bienvenido, {{ user.username }}.
+            </div>
 
             {% endblock %}
+
+            </div>
 
         </div>            
 
