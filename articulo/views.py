@@ -10,13 +10,14 @@ from articulo.models import articulo
 from forms import articuloForm, evaluateForm, acceptForm
 
 def index(request):
-    return HttpResponse("Seccion de articulos del CLEI.")
+    return render_to_response('articulo.html', context_instance=RequestContext(request))
 
 
 def results(request):
     objectlist = articulo.objects.all()
     context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'articulo/results.html', context)
+#    return render(request, 'articulo/results.html', context)
+    return render_to_response('articulo/results.html', context_instance=context)
     
     
 def show_accepted(request):
@@ -34,7 +35,6 @@ def evaluate(request):
 			a.puntajes += float(formulario.data['puntuacion'])
 			a.num_eval += float(1)
 			a.puntuacion = float(a.puntajes/a.num_eval)
-
 			a.save()
 			return HttpResponseRedirect('/articulo/results')
 	else:

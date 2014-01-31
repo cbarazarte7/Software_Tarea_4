@@ -1,5 +1,76 @@
-{% block main %}
-    <div id="login">
+<html>
+    <head>
+
+        <title>{% block title %}Sistema del CLEI{% endblock title %}</title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/css/login.css"type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css">        
+
+    </head>
+
+    <body>
+
+        <header>
+
+
+
+        </header>
+
+        
+
+		
+        {% block main %}
+
+
+
+
+<div id="main">
+
+<!-- Header Starts -->
+<div id="login-header">
+<div class="paddingtop"></div>
+<span class="text">Sistema para las CLEI</span>
+</div>
+<!-- /Header Ends -->
+
+<!--  White Space-->
+<div id="line"></div>
+<!--/ White Space-->
+
+<form action="" method="post">
+<!-- Login Section Starts -->
+        {% csrf_token %}
+<div id="login-inputs">
+<input id="username" class="username" name="username" type="text" value="usuario" onblur='this.value = this.value || this.defaultValue;' onfocus='this.value = &apos;&apos;;'/>
+<input id="password" class="password" name="password" type="password" value="*********" onblur='this.value = this.value || this.defaultValue;' onfocus='this.value = &apos;&apos;;'/>
+</div>
+<!-- /Login Section Ends -->
+
+<!-- Footer Starts -->
+<div id="footer">
+<div class="loginbutton">
+    <button type="submit" class="textbutton" style="background: none;
+        border: none;
+        font-family: Arial;
+        font-weight: bolder;
+        font-size: 15px;
+        color: #ffffff;
+        padding-left: -50px;
+        text-align: center;
+        text-shadow: 1px 0 #7c1906;">Login</button>
+</div>
+</div>
+<!-- /Footer Ends -->
+</form>
+</div>
+
+
+
+<!--
+    <div id="login_form">
         <form class="form-horizontal" name="LoginForm" action="" method="post">
         {% csrf_token %}
         {% if next %}
@@ -23,6 +94,8 @@
             </div>
         </div>
         </form>
-    </div>
+    </div> -->
 {% endblock %}
 
+	</body>
+</html>

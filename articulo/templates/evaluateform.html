@@ -1,4 +1,15 @@
+{% extends "home.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../static/css/style.css"type="text/css">
+{% endblock %}
+
 {% block contenido %}
+
+        <div id="title"> 
+             Evaluar Articulo
+        </div> 
+
 	<form id ='formulario' method='post' enctype='multipart/form-data' action=''> {% csrf_token %}
 		{{formulario.as_p}}
 		<p> <input type='submit' value='Evaluar Articulo'/> </p>

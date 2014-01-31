@@ -1,6 +1,17 @@
+{% extends "home.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../static/css/style.css"type="text/css"> 
+{% endblock %}
+
 {% block contenido %}
+
+        <div id="title"> 
+            Agregar Invitado
+        </div> 
+
 	<form id ='formulario' method='post' enctype='multipart/form-data' action=''> {% csrf_token %}
 		{{formulario.as_p}}
-		<p> <input type='submit' value='Agregar Autor'/> </p>
+		<p> <input type='submit' value='Agregar Invitado'/> </p>
 	</form>
 {% endblock %}

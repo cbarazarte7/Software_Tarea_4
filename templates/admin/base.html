@@ -1,0 +1,33 @@
+<html>
+    <head>
+
+        <title>{% block title %}Sistema del CLEI{% endblock title %}</title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="banner"></div>
+
+
+        </header>
+		
+		<h1>Bienvenido(a)</h1>
+		{% block nav %}
+			<ul id="nav">
+			    <li>{% block nav-home %}<a href="{% url articulo %}">Home</a>{% endblock %}</li>
+			</ul>
+	        {% endblock %}
+		{% block content %}{% endblock content %}
+		{% block footer %}
+			<p>Copyright Reserved 2014</p>
+		{% endblock footer %}
+	</body>
+</html>

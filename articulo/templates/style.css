@@ -1,0 +1,57 @@
+body {
+    background: #e2e2e2;
+}
+
+#content {
+    width: 978px;
+    height: 100%;
+}
+
+#banner {
+    width: 978px;
+    height: 100px;
+
+/*    background: url("/images/header.jpeg") no-repeat right bottom; */
+/*    background: url("/home/michelle/Documents/Ingenieria de Software/Software_Tarea_4/templates/admin/header.jpeg") no-repeat right bottom; */
+    background: green; 
+    margin: 0 auto;
+}
+
+#navigation_bar {
+    width: 1000px;
+    height: 20px;
+    margin: 0 auto;
+
+    vertical-align: middle;
+    line-height: 20px;
+
+    background: #252525;
+}
+
+#left_pannel {
+    width: 175px;
+    text-align: right;
+
+    background: white;
+}
+
+.menu_item {
+    display: block;
+    cursor: pointer;
+    color: blue;
+}
+
+.submenu {
+    display: none;
+}
+
+#central_pannel {
+    width: 978px;
+    height: 100%;
+
+    margin: 0 auto;
+    display: inline;
+
+    background: yellow;
+
+}

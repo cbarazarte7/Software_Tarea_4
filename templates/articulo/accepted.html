@@ -1,4 +1,16 @@
+{% extends "home.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../static/css/style.css"type="text/css"> 
+{% endblock %}
+
+{% block contenido %}
 {% if objectlist %}
+
+        <div id="title"> 
+            Articulos Aceptados
+        </div> 
+
      <TABLE CELLSPACING="20">
 	     <TR>
 		  <TD>Titulo</TD><TD>Autor</TD><TD>Puntuación</TD>
@@ -14,3 +26,5 @@
 {% else %}
     <p>No hay articulos aceptados.</p>
 {% endif %}
+
+{% endblock %}
