@@ -6,5 +6,6 @@ from views import nuevo_evento
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
 	url(r'results/$', views.results, name='results'),
-    	url(r'create/$', nuevo_evento)
+    	url(r'create/$', nuevo_evento),
+    	url(r'coincidente_soc/$', views.coincidente_soc),
 )

@@ -12,17 +12,17 @@ import datetime
   
 def sumar_minutos(ev):
 	
-	#hora_inicio = datetime.datetime.strptime(ev.hora_inicio, '%H:%M')
-	#dur = datetime.datetime.strptime(ev.duracion, '%H:%M')
-	return ev.hora_inicio + datetime.timedelta(minutes=int(3))  
+	##d = datetime.datetime.strptime(ev.duracion, '%H:%M')
+
+	return ev.hora_inicio + datetime.timedelta(minutes=int(ev.duracion))  
 
 # A partir de las horas de inicio y duracion de dos eventos, determina si coinciden
     
 def coincidir(evento1, evento2):
 	hora_inicio_e1 = evento1.hora_inicio
-	hora_fin_e1 = sumar_minutos(evento1)
+	hora_fin_e1 = evento1.hora_fin
 	hora_inicio_e2 = evento2.hora_inicio
-	hora_fin_e2 = sumar_minutos(evento2)
+	hora_fin_e2 = evento2.hora_fin
  	return not( ( (hora_inicio_e1<hora_inicio_e2) and (hora_fin_e1<hora_inicio_e2 )) or ( (hora_inicio_e1>hora_fin_e2) and (hora_fin_e2>hora_fin_e1) ) )
   
 # Determina si dos eventos coinciden en hora y lugar  
@@ -92,12 +92,17 @@ def programar_evento(evento):
     if evento.tipo == 'Social':
       # Si no coincide con otro evento social, se agrega al programa
     	if not coincidir_social(evento):
-			evento.save()
+			
 			# Se eliminan del programa los eventos no sociales con que coincida
 			eliminar_coincidentes(evento)
+			evento.save()
       		# Si coincide con otro evento social, se consulta cual agregar o eliminar
-   #  	else:
-			# coincidente = encontrar_coincidente_soc(evento)
+     	else:
+     		coincidente_soc(evento)
+			#coincidente = encontrar_coincidente_soc(evento)
+			#context = RequestContext(request,{'coincidente':coincidente,'evento':evento,})
+			#return render(request, 'evento/coincidente_soc.html', context)
+
 			# print 
 			# print "El evento coincide con "+coincidente.get_nombre()
 			# print "Desea agregar "+evento.get_nombre()+"? S/N"
@@ -120,8 +125,9 @@ def nuevo_evento(request):
 		if formulario.is_valid():
 			e = evento()
 			e.nombre = formulario.cleaned_data['nombre']
-			e.duracion = formulario.data['duracion']
-			e.hora_inicio = formulario.data['hora_inicio']			
+			e.duracion = formulario.cleaned_data['duracion']
+			e.hora_inicio = formulario.cleaned_data['hora_inicio']	
+			e.hora_fin = formulario.cleaned_data['hora_fin']		
 			e.fecha = formulario.cleaned_data['fecha']
 			e.tipo = formulario.cleaned_data['tipo']
 			e.lugar_id = formulario.data['lugar']
@@ -133,6 +139,11 @@ def nuevo_evento(request):
 
 def index(request):
     return HttpResponse("Hello, world. You're at the poll index.")
+
+def coincidente_soc(ev):
+	coincidente = encontrar_coincidente_soc(ev)
+	context = RequestContext(request,{'coincidente':coincidente,'evento':ev,})
+	return render(request, 'evento/coincidente_soc.html', context)
 
 def results(request):
     objectlist = evento.objects.all()

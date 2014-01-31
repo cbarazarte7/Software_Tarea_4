@@ -9,8 +9,9 @@ from django.db import models
 
 class eventoForm(forms.Form):
 	nombre = forms.CharField(widget=forms.TextInput())
-	duracion = forms.IntegerField(widget=forms.TextInput())
+	duracion = forms.CharField(widget=forms.TextInput())
 	hora_inicio = forms.TimeField(widget=forms.TextInput())
+	hora_fin = forms.TimeField(widget=forms.TextInput())
 	fecha = forms.DateField(widget=forms.TextInput())	
 	tipo = forms.CharField(widget=forms.TextInput())
 	lugar = forms.ModelChoiceField(queryset=espacio.objects.all())
