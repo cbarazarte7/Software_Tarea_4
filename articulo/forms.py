@@ -15,4 +15,8 @@ class articuloForm(forms.Form):
 # Formulario para evaluar:
 class evaluateForm(forms.Form):
 	articulo = forms.ModelChoiceField(queryset=articulo.objects.all())
-	puntuacion = forms.FloatField(widget=forms.NumberInput())
+	puntuacion = forms.FloatField(widget=forms.NumberInput(),min_value=1.0,max_value=5.0,help_text='Recuerde: Debe estar entre 1.0 y 5.0')
+	
+# Formulario para aceptar (por nota):
+class acceptForm(forms.Form):
+	nota = forms.FloatField(widget=forms.NumberInput(),min_value=1.0,max_value=5.0,help_text='Recuerde: Debe estar entre 1.0 y 5.0')
