@@ -7,4 +7,6 @@ urlpatterns = patterns('',
 		url(r'create/$', views.nuevo_articulo, name='create'),
     url(r'results/$', views.results, name='results'),
     url(r'evaluate/$', views.evaluate, name='evaluate'),
+    url(r'accept/$', views.accept, name='accept'),
+    url(r'accepted/$', views.show_accepted, name='show_accepted'),
 )
