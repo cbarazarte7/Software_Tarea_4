@@ -14,7 +14,8 @@ def index(request):
 def results(request):
     objectlist = articulo.objects.all()
     context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'articulo/results.html', context)
+#    return render(request, 'articulo/results.html', context)
+    return render_to_response('articulo/results.html', context_instance=context)
     
     
 def show_accepted(request):

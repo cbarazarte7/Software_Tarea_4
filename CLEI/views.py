@@ -10,16 +10,14 @@ def home(request):
 def login_user(request):
     logout(request)
     username = password = ''
+    admin = False
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
        	    login(request, user)
-            if user.username == 'admin':
-                return render_to_response('home.html', context_instance=RequestContext(request))
-            else:
-                return render_to_response('home_autor.html', context_instance=RequestContext(request))
+            return render_to_response('home.html', context_instance=RequestContext(request))
 
     return render_to_response('login.html', context_instance=RequestContext(request))
 

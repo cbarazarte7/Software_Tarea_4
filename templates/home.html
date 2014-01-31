@@ -47,13 +47,16 @@
 
             {% block left_pannel %}
 
+            {% if user.username == "admin" %}
+
                     <div class="menu_item">
                         <a>Articulos</a>
                     </div>
                     
                     <div class="submenu">
                         <a class="menu_item" href="/articulo/create">Crear</a>
-                        <a class="menu_item" href="/articulo/results">Listar</a>
+                        <a class="menu_item" href="/articulo/results">Listar Recibidos</a>
+                        <a class="menu_item" href="/articulo/accepted">Listar Aceptados</a>
                         <a class="menu_item" href="/articulo/evaluate">Evaluar</a>
                     </div>                      
 
@@ -95,7 +98,19 @@
                         <a class="menu_item" href="/evento/results">Listar</a>
                     </div>
 
-                </div>                    
+                </div>              
+
+            {% else %}
+                
+                    <div class="menu_item">
+                        <a>Articulos</a>
+                    </div>
+                    
+                    <div class="submenu">
+                        <a class="menu_item" href="/articulo/create">Crear</a>
+                    </div>                      
+
+            {% endif %}
 
             {% endblock %}
 
