@@ -8,7 +8,7 @@ from miembrocp.models import miembrocp
 from forms import miembrocpForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+    return HttpResponse("Seccion de miembros de comite de programa.")
 
 
 def results(request):
