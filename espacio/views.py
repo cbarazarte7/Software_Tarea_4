@@ -1,11 +1,20 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from models import espacio
-from forms import espacioForm
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
+from models import espacio
+from forms import espacioForm
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the poll index.")
+
+def results(request):
+    objectlist = espacio.objects.all()
+    context = RequestContext(request,{'objectlist':objectlist,})
+    return render(request, 'espacio/results.html', context)
+    
 def nuevo_espacio(request):
 	if request.method=='POST':
 		formulario = espacioForm(request.POST, request.FILES)
@@ -19,11 +28,3 @@ def nuevo_espacio(request):
 	else:
 		formulario = espacioForm()
 	return render_to_response('espacioform.html', {'formulario':formulario}, context_instance=RequestContext(request))
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
-
-def results(request):
-    objectlist = espacio.objects.all()
-    context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'espacio/results.html', context)

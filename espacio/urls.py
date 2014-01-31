@@ -4,6 +4,6 @@ from espacio import views
 
 urlpatterns = patterns('',
 		url(r'^$', views.index, name='index'),
+		url(r'create/$', nuevo_espacio, name='create'),
     url(r'results/$', views.results, name='results'),
-    url(r'create/$', nuevo_espacio, name='create'),
 )

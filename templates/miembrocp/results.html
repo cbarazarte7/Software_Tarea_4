@@ -1,0 +1,16 @@
+{% if objectlist %}
+     <TABLE CELLSPACING="20">
+	     <TR>
+		  <TD>Nombre</TD><TD>Apellido</TD><TD>Email</TD><TD>País</TD><TD>Institución</TD><TD>url</TD><TD>Teléfono</TD><TD>Es Presidente</TD>
+	     </TR>
+	     <ul>
+	     	{% for e in objectlist %}
+		     <TR>
+			  <TD>{{ e.nombre }}</TD><TD>{{ e.apellido }}</TD><TD>{{ e.email }}</TD><TD>{{ e.pais }}</TD><TD>{{ e.institucion }}</TD><TD>{{ e.url }}</TD><TD>{{ e.telefono }}</TD><TD>{{ e.esPresidente }}</TD>
+		     </TR>
+	     	{%endfor%}
+	       </TABLE>
+	    </ul>
+{% else %}
+    <p>No hay miembros de cp disponibles.</p>
+{% endif %}
