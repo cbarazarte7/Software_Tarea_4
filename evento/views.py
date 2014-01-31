@@ -120,13 +120,13 @@ from models import evento
 from forms import eventoForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+	return HttpResponse("Hello, world. You're at the poll index.")
 
 
 def results(request):
-    objectlist = evento.objects.all()
-    context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'evento/results.html', context)
+	objectlist = evento.objects.all()
+	context = RequestContext(request,{'objectlist':objectlist,})
+	return render(request, 'evento/results.html', context)
     
 
 def nuevo_evento(request):
@@ -149,15 +149,14 @@ def nuevo_evento(request):
 	return render_to_response('eventoform.html', {'formulario':formulario}, context_instance=RequestContext(request))
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+	return HttpResponse("Hello, world. You're at the poll index.")
 
 def coincidente_soc(ev):
-	coincidente = encontrar_coincidente_soc(ev)
-	context = RequestContext(request,{'coincidente':coincidente,'evento':ev,})
-	return render(request, 'evento/coincidente_soc.html', context)
+	#coincidente = encontrar_coincidente_soc(ev)
+	#context = RequestContext(request,{'coincidente':coincidente,'evento':ev,})
+	#return HttpResponseRedirect('/evento/coincidente_soc')
 
 def results(request):
-    objectlist = evento.objects.all()
-    context = RequestContext(request,{'objectlist':objectlist,})
-    return render(request, 'evento/results.html', context)
-
+	objectlist = evento.objects.all()
+	context = RequestContext(request,{'objectlist':objectlist,})
+	return render(request, 'evento/results.html', context)
