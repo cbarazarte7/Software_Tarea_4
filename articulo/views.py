@@ -7,7 +7,7 @@ from django import forms
 from django.forms.util import ErrorList
 
 from articulo.models import articulo
-from forms import articuloForm, evaluateForm
+from forms import articuloForm, evaluateForm, acceptForm
 
 def index(request):
     return HttpResponse("Seccion de articulos del CLEI.")
@@ -17,6 +17,12 @@ def results(request):
     objectlist = articulo.objects.all()
     context = RequestContext(request,{'objectlist':objectlist,})
     return render(request, 'articulo/results.html', context)
+    
+    
+def show_accepted(request):
+    objectlist = articulo.objects.filter(estado='aceptado')
+    context = RequestContext(request,{'objectlist':objectlist,})
+    return render(request, 'articulo/accepted.html', context)
 
 
 def evaluate(request):
@@ -44,7 +50,26 @@ def nuevo_articulo(request):
 			a.autor = formulario.cleaned_data['autor']			
 			a.texto = formulario.cleaned_data['texto']
 			a.save()
-			return HttpResponseRedirect('/articulo/evaluate')
+			return HttpResponseRedirect('/articulo/results')
 	else:
 		formulario = articuloForm()
 	return render_to_response('articuloform.html', {'formulario':formulario}, context_instance=RequestContext(request))
+	
+def accept(request):
+	if request.method=='POST':
+		formulario = acceptForm(request.POST, request.FILES)
+
+		if formulario.is_valid():
+			nota = float(formulario.data['nota'])
+			objectlist = articulo.objects.all()
+			for a in objectlist:
+					if a.puntuacion >= nota and a.es_aceptable:
+						a.estado = 'aceptado'
+					else:
+						a.estado = 'rechazado'
+					a.save()
+			
+			return HttpResponseRedirect('/articulo/accepted')
+	else:
+		formulario = acceptForm()
+	return render_to_response('acceptform.html', {'formulario':formulario}, context_instance=RequestContext(request))

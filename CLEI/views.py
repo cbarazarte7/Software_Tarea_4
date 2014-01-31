@@ -13,6 +13,8 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
        	    login(request, user)
-            return render_to_response('home.html', context_instance=RequestContext(request))
+            return HttpResponseRedirect('/home')
     return render_to_response('login.html', context_instance=RequestContext(request))
 
+def home(request):
+    return render_to_response('home.html', context_instance=RequestContext(request))

@@ -8,7 +8,7 @@ from autor.models import autor
 from forms import autorForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+    return HttpResponse("Seccion de autores del CLEI.")
 
 
 def results(request):
