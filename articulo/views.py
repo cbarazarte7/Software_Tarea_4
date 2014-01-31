@@ -40,6 +40,8 @@ def evaluate(request):
 	else:
 		formulario = evaluateForm()
 	return render_to_response('evaluateform.html', {'formulario':formulario}, context_instance=RequestContext(request))
+
+
 def nuevo_articulo(request):
 	if request.method=='POST':
 		formulario = articuloForm(request.POST, request.FILES)
@@ -54,6 +56,7 @@ def nuevo_articulo(request):
 	else:
 		formulario = articuloForm()
 	return render_to_response('articuloform.html', {'formulario':formulario}, context_instance=RequestContext(request))
+
 	
 def accept(request):
 	if request.method=='POST':
