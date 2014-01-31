@@ -6,7 +6,28 @@
         {% load staticfiles %}
 
         <meta charset="utf-8">
-        <link rel="stylesheet" href="static/css/style.css"type="text/css">
+        {% block stylesheet %} <link rel="stylesheet" href="../static/css/style.css"type="text/css"> {% endblock %}
+        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <script>
+            $( document ).ready(
+                function() {
+
+                    alert("Document loaded");
+
+                    $(function() {
+                        $( "#accordion" ).accordion({
+                            collapsible: true,
+                            active: false
+                        });
+
+                    });
+
+
+                });
+            
+        </script>
 
     </head>
 
@@ -18,17 +39,82 @@
 
         </header>
 
-        <p>Welcome, {{ user.username }}.</p>
+        <div id="left_pannel">
+            
+            <a class="menu_item" href="/home">Inicio</a>
 
-        <div id="left_menu">
+            <div id="accordion">
 
-            Inicio
-            Articulo
-            Inscripcion
-            Espacios
-            Eventos
+            {% block left_pannel %}
+
+                    <div class="menu_item">
+                        <a>Articulos</a>
+                    </div>
+                    
+                    <div class="submenu">
+                        <a class="menu_item" href="/articulo/create">Crear</a>
+                        <a class="menu_item" href="/articulo/results">Listar</a>
+                        <a class="menu_item" href="/articulo/evaluate">Evaluar</a>
+                    </div>                      
+
+                    <div class="menu_item">
+                        <a>Inscritos</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a class="menu_item" href="/autor/results">Autores</a>
+                        <a class="menu_item" href="/participante/results">Participantes</a>
+                        <a class="menu_item" href="/miembrocp/results">Miembro CP</a>
+                        <a class="menu_item" href="/invitado/results">Invitados</a>
+                    </div>
+
+                    <div class="menu_item">
+                        <a>Inscripciones</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a class="menu_item" href="/autor/create">Autor</a>
+                        <a class="menu_item" href="/participante/create">Participante</a>
+                        <a class="menu_item" href="/miembrocp/create">Miembro CP</a>
+                        <a class="menu_item" href="/invitado/create">Invitado</a>
+                    </div>
+
+                    <div class="menu_item">
+                        <a>Espacios</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a class="menu_item" href="/espacio/create">Crear</a>
+                        <a class="menu_item" href="/espacio/results">Listar</a>
+                    </div>
+
+                    <div class="menu_item">
+                        <a>Eventos</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a class="menu_item" href="/evento/create">Crear</a>
+                        <a class="menu_item" href="/evento/results">Listar</a>
+                    </div>
+
+                </div>                    
+
+            {% endblock %}
+
+            </div>
+
 
         </div>
+
+        <div id="central_pannel">
+
+            {% block contenido %}
+
+            <p>Bienvenido, {{ user.username }}.</p>
+
+            {% endblock %}
+
+        </div>            
 
 	</body>
 </html>

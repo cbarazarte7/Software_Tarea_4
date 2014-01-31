@@ -1,3 +1,10 @@
+{% extends "home.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../static/css/style.css"type="text/css"> 
+{% endblock %}
+
+{% block contenido %}
 {% if objectlist %}
      <TABLE CELLSPACING="20">
 	     <TR>
@@ -14,3 +21,4 @@
 {% else %}
     <p>No hay espacios disponibles.</p>
 {% endif %}
+{% endblock %}

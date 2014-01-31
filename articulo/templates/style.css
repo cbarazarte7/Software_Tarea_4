@@ -31,7 +31,6 @@ body {
 #left_pannel {
     width: 175px;
     text-align: right;
-    display: inline-block;
 
     background: white;
 }
@@ -50,10 +49,9 @@ body {
     width: 978px;
     height: 100%;
 
-    position: absolute;
-    display: inline-block;
-
     margin: 0 auto;
+    display: inline;
+
     background: yellow;
 
 }

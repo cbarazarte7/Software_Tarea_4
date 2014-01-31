@@ -8,7 +8,7 @@ from articulo.models import articulo
 from forms import articuloForm, evaluateForm
 
 def index(request):
-    return HttpResponse("Seccion de articulos del CLEI.")
+    return render_to_response('articulo.html', context_instance=RequestContext(request))
 
 
 def results(request):

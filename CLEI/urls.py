@@ -12,7 +12,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # CLEI:
     url(r'^$', 'CLEI.views.login_user'),
-    #url(r'^home/', 'CLEI.views.home', name='home'),
+
+    url(r'^home/', 'CLEI.views.home', name='home'),
     
     # Articulo:
     url(r'^articulo/', include('articulo.urls')),
