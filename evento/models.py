@@ -3,7 +3,6 @@ from espacio.models import espacio
 
 class evento(models.Model):
 	nombre = models.CharField(max_length=140)
-	duracion = models.CharField(max_length=10)
 	hora_inicio = models.TimeField()
 	hora_fin = models.TimeField()
 	fecha = models.DateField()

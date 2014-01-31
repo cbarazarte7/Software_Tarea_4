@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.forms import ModelForm
 from django import forms
 from evento.models import evento
@@ -8,7 +9,6 @@ from django.db import models
 
 class eventoForm(forms.Form):
 	nombre = forms.CharField(widget=forms.TextInput())
-	duracion = forms.CharField(widget=forms.TextInput())
 	hora_inicio = forms.TimeField(widget=forms.TextInput())
 	hora_fin = forms.TimeField(widget=forms.TextInput())
 	fecha = forms.DateField(widget=forms.TextInput())	
