@@ -30,9 +30,13 @@ def nuevo_miembrocp(request):
 			e.institucion = formulario.data['institucion']
 			e.url = formulario.data['url']
 			e.telefono = formulario.data['telefono']
-			e.esPresidente = formulario.data['esPresidente']
+			if formulario.cleaned_data['esPresidente']:
+				e.esPresidente = True
+			else:
+				e.esPresidente = False
+				
 			e.save()
-			return HttpResponseRedirect('/miembrocp/create')
+			return HttpResponseRedirect('/miembrocp/results')
 	else:
 		formulario = miembrocpForm()
 	return render_to_response('miembrocpform.html', {'formulario':formulario}, context_instance=RequestContext(request))

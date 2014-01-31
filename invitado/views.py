@@ -31,7 +31,7 @@ def nuevo_invitado(request):
 			e.url = formulario.data['url']
 			e.telefono = formulario.data['telefono']
 			e.save()
-			return HttpResponseRedirect('/invitado/create')
+			return HttpResponseRedirect('/invitado/results')
 	else:
 		formulario = invitadoForm()
 	return render_to_response('invitadoform.html', {'formulario':formulario}, context_instance=RequestContext(request))

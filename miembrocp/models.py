@@ -8,7 +8,7 @@ class miembrocp(models.Model):
 	institucion = models.CharField(max_length=140, null=True)
 	url = models.URLField(null=True)
 	telefono = models.CharField(max_length=140, null=True)
-	telefono = models.BooleanField()
+	esPresidente = models.NullBooleanField()
 	
 	def __unicode__(self):
 		return self.nombre

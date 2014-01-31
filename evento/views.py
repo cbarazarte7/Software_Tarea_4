@@ -30,7 +30,7 @@ def nuevo_evento(request):
 			e.tipo = formulario.cleaned_data['tipo']
 			e.lugar_id = formulario.data['lugar']
 			e.save()
-			return HttpResponseRedirect('/evento/create')
+			return HttpResponseRedirect('/evento/results')
 	else:
 		formulario = eventoForm()
 	return render_to_response('eventoform.html', {'formulario':formulario}, context_instance=RequestContext(request))

@@ -24,7 +24,7 @@ def nuevo_espacio(request):
 			e.ubicacion = formulario.cleaned_data['ubicacion']			
 			e.capacidad = formulario.cleaned_data['capacidad']			
 			e.save()
-			return HttpResponseRedirect('/espacio/create')
+			return HttpResponseRedirect('/espacio/results')
 	else:
 		formulario = espacioForm()
 	return render_to_response('espacioform.html', {'formulario':formulario}, context_instance=RequestContext(request))

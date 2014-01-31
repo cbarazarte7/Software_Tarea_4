@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.template import RequestContext
+from django import forms
+from django.forms.util import ErrorList
 
 from articulo.models import articulo
 from forms import articuloForm, evaluateForm
@@ -26,12 +28,12 @@ def evaluate(request):
 			a.puntajes += float(formulario.data['puntuacion'])
 			a.num_eval += float(1)
 			a.puntuacion = float(a.puntajes/a.num_eval)
+
 			a.save()
-			return HttpResponseRedirect('/articulo/evaluate')
+			return HttpResponseRedirect('/articulo/results')
 	else:
 		formulario = evaluateForm()
 	return render_to_response('evaluateform.html', {'formulario':formulario}, context_instance=RequestContext(request))
-        
 def nuevo_articulo(request):
 	if request.method=='POST':
 		formulario = articuloForm(request.POST, request.FILES)
@@ -42,7 +44,7 @@ def nuevo_articulo(request):
 			a.autor = formulario.cleaned_data['autor']			
 			a.texto = formulario.cleaned_data['texto']
 			a.save()
-			return HttpResponseRedirect('/articulo/create')
+			return HttpResponseRedirect('/articulo/evaluate')
 	else:
 		formulario = articuloForm()
 	return render_to_response('articuloform.html', {'formulario':formulario}, context_instance=RequestContext(request))

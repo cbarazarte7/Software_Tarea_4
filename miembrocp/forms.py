@@ -13,4 +13,4 @@ class miembrocpForm(forms.Form):
 	institucion = forms.CharField(widget=forms.TextInput(),required=False)
 	url = forms.URLField(widget=forms.URLInput(),required=False)
 	telefono = forms.CharField(widget=forms.TextInput(),required=False)
-	esPresidente = forms.BooleanField(widget=forms.CheckboxInput(), label= "Presidente")
+	esPresidente = forms.NullBooleanField(widget=forms.CheckboxInput(), label= "Presidente")
